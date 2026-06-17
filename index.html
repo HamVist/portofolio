@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhamad Yasrul Ilham | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* VIDEO BACKGROUND FULL */
+.bg-video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* OVERLAY */
+.overlay-bg{
+    position:fixed;
+    inset:0;
+    background:rgba(7,11,20,.75);
+    z-index:-1;
+}
+
+/* BODY */
+body{
+    color:#fff;
+    background:transparent;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(7,11,20,.60);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+nav a:hover{
+    color:#06b6d4;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:#3b82f6;
+}
+
+/* HERO */
+.hero{
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    padding-top:80px;
+}
+
+.hero-wrap{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:40px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border:1px solid #3b82f6;
+    border-radius:30px;
+    color:#06b6d4;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:54px;
+    line-height:1.1;
+    margin:15px 0;
+}
+
+.hero p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.typing{
+    color:#06b6d4;
+    font-size:22px;
+    font-weight:600;
+    height:40px;
+    margin-top:15px;
+}
+
+/* PROFILE */
+.profile{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #3b82f6;
+    box-shadow:0 0 50px rgba(59,130,246,.5);
+    transition:.4s;
+}
+
+.profile:hover{
+    transform:scale(1.05);
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:12px;
+    background:#3b82f6;
+    color:white;
+    text-decoration:none;
+    margin-top:20px;
+    transition:0.3s ease;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+}
+/* SECTION */
+section{
+    padding:60px 0;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.title h2{
+    font-size:34px;
+}
+
+/* CARD */
+.card{
+    background:rgba(16,24,39,.85);
+    border:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    border-radius:20px;
+}
+
+/* SKILLS (FULL FIX) */
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.skill{
+    text-align:center;
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+}
+
+.skill i{
+    font-size:35px;
+    color:#06b6d4;
+    margin-bottom:15px;
+}
+
+/* PROJECT */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:20px;
+}
+
+.project{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.project img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transition:.4s;
+}
+
+.project:hover .overlay{
+    opacity:1;
+}
+
+/* CONTACT */
+.contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+.info a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:white;
+    text-decoration:none;
+    margin:15px 0;
+    padding:12px 15px;
+    background:#0f172a;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.info a:hover{
+    background:#1e293b;
+    transform:translateX(8px);
+    color:#06b6d4;
+}
+
+.info i{
+    font-size:22px;
+    color:#06b6d4;
+}
+
+/* FORM */
+input,textarea{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    background:#0f172a;
+    border:1px solid #23324f;
+    color:white;
+    border-radius:10px;
+}
+
+button{
+    padding:14px 24px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid #1f2937;
+    color:#94a3b8;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero-wrap,
+    .contact{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    h1{font-size:38px;}
+    .profile{width:240px;height:240px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay-bg"></div>
+
+<!-- NAV -->
+<nav>
+<div class="container nav">
+<div class="logo">Muhamad Yasrul Ilham</div>
+<div>
+<a href="#about">Tentang</a>
+<a href="#skills">Kemampuan</a>
+<a href="#projects">Project</a>
+<a href="#contact">Kontak</a>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-wrap">
+<div>
+<span class="badge">🚀 Fresh Graduate | Network Enthusiast</span>
+<h1>Muhamad Yasrul Ilham</h1>
+<p>Saya cukup memahami tentang Teknologi Informasi khususnya jaringan komputer.</p>
+<div class="typing" id="typing"></div>
+<a href="#contact" class="btn">Hubungi Saya</a>
+</div>
+
+<div style="text-align:center">
+<img src="profil.jpeg" class="profile">
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<div class="title"><h2>Tentang Saya</h2></div>
+<div class="card">
+<p>Saya merupakan lulusan baru dari SMK Bintang Nusantara School dengan minat dan kemampuan di bidang Teknologi Informasi, khususnya jaringan komputer. Memiliki keterampilan yang baik dalam Network Troubleshooting, instalasi sistem operasi, serta konfigurasi dasar jaringan komputer. Mampu bekerja secara mandiri maupun dalam tim, memiliki kemampuan komunikasi yang baik, serta terbiasa menyelesaikan masalah secara efektif dan efisien. Saya adalah pribadi yang disiplin, cekatan, bertanggung jawab, mudah beradaptasi dengan lingkungan baru, serta memiliki semangat belajar yang tinggi untuk terus mengembangkan pengetahuan dan keterampilan di bidang teknologi informasi </p>
+<a href="png2pdf.pdf" download class="btn">Download CV</a>
+</div>
+</div>
+</section>
+
+<!-- SKILLS (FULL BALIK LAGI) -->
+<section id="skills">
+<div class="container">
+<div class="title"><h2>Kemampuan</h2></div>
+
+<div class="skills">
+
+<div class="card skill"><i class="fa-solid fa-network-wired"></i><h3>MikroTik</h3></div>
+<div class="card skill"><i class="fa-brands fa-linux"></i><h3>Linux Server</h3></div>
+<div class="card skill"><i class="fa-brands fa-windows"></i><h3>Windows Server</h3></div>
+<div class="card skill"><i class="fa-solid fa-diagram-project"></i><h3>Cisco Packet Tracer</h3></div>
+<div class="card skill"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Maker</h3></div>
+<div class="card skill"><i class="fa-solid fa-wifi"></i><h3>Troubleshooting Jaringan</h3></div>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECT -->
+<section id="projects">
+<section id="projects">
+<div class="container">
+<div class="title">
+<h2>Project</h2>
+</div>
+
+<div class="projects">
+
+<div class="project">
+<img src="proyek2.jpeg" alt="Arduino Project">
+<div class="overlay">
+<h3>Instalasi Hardware Arduino Uno</h3>
+<p>Simulasi membuat sistem pintu otomatis dengan kode pin</p>
+</div>
+</div>
+
+<div class="project">
+<img src="proyek1.jpeg" alt="Server Project">
+<div class="overlay">
+<h3>Server Deployment</h3>
+<p>Instalasi & konfigurasi web server dan file server di jaringan lokal</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<div class="title"><h2>Kontak</h2></div>
+
+<div class="contact">
+
+<div class="card info">
+
+<a href="mailto:yasrulilham9@gmail.com" target="_blank">
+    <i class="fa-solid fa-envelope"></i>
+    yasrulilham9@gmail.com
+</a>
+
+<a href="https://wa.me/628561252909" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+    +62 856-1252-909
+</a>
+
+<a href="https://github.com/HamVist" target="_blank">
+    <i class="fa-brands fa-github"></i>
+    github.com/HamVist
+</a>
+
+<a href="https://instagram.com/hamvizt" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+    instagram.com/hamvizt
+</a>
+</div>
+
+<div class="card">
+<form>
+<input placeholder="Nama">
+<input placeholder="Email">
+<textarea placeholder="Pesan"></textarea>
+<button>Kirim</button>
+</form>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Portfolio
+</footer>
+
+<script>
+const words=["Network","MikroTik","Linux Server","Troubleshooting"];
+let i=0,j=0,del=false;
+
+setInterval(()=>{
+let el=document.getElementById("typing");
+let w=words[i];
+
+el.textContent=w.substring(0,j);
+
+if(!del){
+j++;
+if(j>w.length) del=true;
+}else{
+j--;
+if(j===0){
+del=false;
+i=(i+1)%words.length;
+}
+}
+},100);
+</script>
+
+</body>
+</html>
